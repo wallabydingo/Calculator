@@ -37,3 +37,16 @@ const operate = function(operator, a, b) {
             break;
     };
 };
+
+var screen = '';
+
+const clearScreen = function() {
+    screen = '';
+    console.log(screen);
+};
+
+const screenAdd = function(a) {
+    screen = screen.concat(a);
+    console.log(screen);
+};
+
