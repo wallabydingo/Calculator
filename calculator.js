@@ -42,11 +42,12 @@ var screen = '';
 
 const clearScreen = function() {
     screen = '';
-    console.log(screen);
+    document.getElementById("display").innerHTML = 0;
 };
 
 const screenAdd = function(a) {
     screen = screen.concat(a);
+    document.getElementById("display").innerHTML = screen;
     console.log(screen);
 };
 
