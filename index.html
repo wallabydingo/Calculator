@@ -10,36 +10,30 @@
 </head>
 <body>
     <div class="calculator">
-        <div class="screenRow">
-            <div class="screen">1234567890</div>
-            <button>C</button>
-        </div>
-        <div class="keys">
-            <div class="firstRow">
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>+</button>
-            </div>
-            <div class="secondRow">
-                <button>4</button>
-                <button>5</button>
-                <button>6</button>
-                <button>-</button>
-            </div>
-            <div class="thirdRow">
-                <button>7</button>
-                <button>8</button>
-                <button>9</button>
-                <button>x</button>
-            </div>
-            <div class="fourthRow">
-                <button>0</button>
-                <button>.</button>
-                <button>=</button>
-                <button>&#247;</button>
-            </div>
-        </div>
+        <div class="screen" id="display">0</span></div>
+        <button class="clear" onclick="clearScreen()">C</button>
+        
+        <button onclick="screenAdd('1')">1</button>
+        <button onclick="screenAdd('2')">2</button>
+        <button onclick="screenAdd('3')">3</button>
+        <button class="operator" onclick="screenAdd('+')">+</button>
+            
+        <button onclick="screenAdd('4')">4</button>
+        <button onclick="screenAdd('5')">5</button>
+        <button onclick="screenAdd('6')">6</button>
+        <button class="operator" onclick="screenAdd('-')">-</button>
+            
+        <button onclick="screenAdd('7')">7</button>
+        <button onclick="screenAdd('8')">8</button>
+        <button onclick="screenAdd('9')">9</button>
+        <button class="operator" onclick="screenAdd('*')">x</button>
+            
+        <button onclick="screenAdd('0')">0</button>
+        <button onclick="screenAdd('.')">.</button>
+        <button class="equals" onclick="operate('+',12,34)">=</button>
+        <button class="operator" onclick="screenAdd('/')">&#247;</button>
+           
+        
     </div>
 </body>
 </html>
