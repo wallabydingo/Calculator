@@ -17,6 +17,7 @@ const divide = function(a, b) {
     
   };
 
+
 const operate = function(operator, a, b) {
     switch(operator) {
         case "+":
