@@ -12,7 +12,7 @@ const multiply = function(a, b) {
   
 const divide = function(a, b) {
     if (b === 0) {
-        console.log("Can't divide by zero, ya clown!");
+        document.getElementById("display").innerHTML = "No way!";
     } else {return a / b;}
     
   };
@@ -66,12 +66,19 @@ const screenAdd = function(keypress) {
                 secondNo = screen.replace(firstNo+oper.slice(0,1),'');
                 secondNo = parseFloat(secondNo.replace(oper.slice(-1),''));
                 firstNo = operate(oper.slice(0,1),firstNo,secondNo).toString();
-                document.getElementById("display").innerHTML = firstNo;
+                /* firstNo = operate(oper.slice(0,1),firstNo,secondNo).toPrecision(3);
+                firstNo = firstNo.toString(); */
+                screen = firstNo;
+                document.getElementById("display").innerHTML = screen;
+                secondNo = '';
+                oper = '';
             } else {
                 firstNo = parseFloat(screen.split(oper.slice(0,1))[0]);
                 secondNo = screen.replace(firstNo+oper.slice(0,1),'');
                 secondNo = parseFloat(secondNo.replace(oper.slice(-1),''));
                 firstNo = operate(oper.slice(0,1),firstNo,secondNo).toString();
+                /* firstNo = operate(oper.slice(0,1),firstNo,secondNo).toPrecision(3);
+                firstNo = firstNo.toString(); */
                 oper = oper.slice(-1);
                 screen = firstNo + oper;
                 document.getElementById("display").innerHTML = screen;
