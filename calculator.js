@@ -64,17 +64,21 @@ const screenAdd = function(keypress) {
     } else {
         oper = oper.concat(keypress);
         firstLen = firstNo.length;
+        console.log("firstno digits: "+firstLen);
         console.log("operator "+oper);
         if (oper.length > 1) {
             
-        
+            console.log(firstNo);
             secondNo = screen.replace(firstNo.slice(0,firstLen-2)+oper.slice(0,1),'');
+            console.log(secondNo);
             //show = operate(oper.slice(0,1),parseFloat(firstNo.replace(secondNo.slice(0,-1),'')),parseFloat(secondNo.slice(0,-1)));
             console.log(oper.slice(0,1));
             //console.log(parseFloat(firstNo.replace(secondNo.slice(0,-1),'')));
             firstNo = parseFloat(firstNo.replace(secondNo.slice(0,-1),''));
+            console.log(firstNo);
             secondNo = parseFloat(secondNo.slice(0,-1));
-            firstNo = operate(oper.slice(0,1),firstNo,secondNo);
+            console.log(secondNo);
+            firstNo = operate(oper.slice(0,1),firstNo,secondNo).toString();
             oper = oper.slice(-1);
             screen = firstNo + oper;
             console.log(firstNo);
