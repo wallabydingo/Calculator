@@ -1,3 +1,5 @@
+
+
 const add = function(a, b) {
     return a + b;
   };
@@ -42,6 +44,29 @@ const operate = function(operator, a, b) {
 
 let firstNo = '';
 let oper = '';
+const lockOperators = function() {
+    var input = document.getElementsByClassName('operator');
+            for (var i = 0; i < input.length; i++) {
+                input[i].disabled = true;
+            };
+};
+
+const unlockOperators = function() {
+    var input = document.getElementsByClassName('operator');
+            for (var i = 0; i < input.length; i++) {
+                input[i].disabled = false;
+            };
+};
+
+
+/* const lockEquals = function() {
+    document.getElementById("equals").disabled = true;
+};
+
+const unlockEquals = function() {
+    document.getElementById("equals").disabled = false;
+}; */
+
 
 var screen = '';
 
@@ -51,11 +76,13 @@ const clearScreen = function() {
     oper = '';
     secondNo = '';
     document.getElementById("display").innerHTML = 0;
+    lockOperators();
 };
 
 const screenAdd = function(keypress) {
     
     screen = screen.concat(keypress);
+    unlockOperators();
     document.getElementById("display").innerHTML = screen;
     
     if (isNaN(keypress) == true) {
@@ -85,6 +112,10 @@ const screenAdd = function(keypress) {
             };
         };
         
+    };
+    if (screen.slice(-1) == oper) {
+        console.log("lock?")
+        lockOperators();
     };
      
 };
