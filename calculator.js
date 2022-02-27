@@ -83,6 +83,7 @@ const screenAdd = function(keypress) {
     
     screen = screen.concat(keypress);
     unlockOperators();
+    
     document.getElementById("display").innerHTML = screen;
     
     if (isNaN(keypress) == true) {
@@ -113,9 +114,14 @@ const screenAdd = function(keypress) {
         };
         
     };
+    
     if (screen.slice(-1) == oper) {
-        console.log("lock?")
         lockOperators();
     };
-     
+     console.log("1st: "+firstNo);
+     console.log("2nd: "+secondNo);
+     console.log("op: "+oper);
+    if (oper == '') {
+        document.getElementById("equals").disabled = true;
+    };
 };
