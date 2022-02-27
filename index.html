@@ -11,7 +11,7 @@
 <body>
     <div class="calculator">
         <div class="screen" id="display">0</span></div>
-        <button class="clear" onclick="clearScreen()">C</button>
+        <button id="clear" class="clear" onclick="clearScreen()">C</button>
         
         <button onclick="screenAdd('1')">1</button>
         <button onclick="screenAdd('2')">2</button>
@@ -29,7 +29,7 @@
         <button disabled class="operator" onclick="screenAdd('*')">x</button>
             
         <button onclick="screenAdd('0')">0</button>
-        <button disabled onclick="screenAdd('.')">.</button>
+        <button disabled id="dec" onclick="screenAdd('.')">.</button>
         <button disabled id="equals" class="operator" onclick="screenAdd('=')">=</button>
         <button disabled class="operator" onclick="screenAdd('/')">&#247;</button>
            

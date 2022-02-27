@@ -14,7 +14,10 @@ const multiply = function(a, b) {
   
 const divide = function(a, b) {
     if (b === 0) {
-        document.getElementById("display").innerHTML = "No way!";
+        document.getElementById("display").innerHTML = "No! div/0";
+        lockButtons();
+        console.log("unlock clear?")
+        document.getElementById("clear").disabled = false;
     } else {return a / b;}
     
   };
@@ -41,9 +44,24 @@ const operate = function(operator, a, b) {
     };
     
 };
+const lockButtons = function() {
+    var input = document.getElementsByTagName('button');
+            for (var i = 0; i < input.length; i++) {
+                input[i].disabled = true;
+            };
+};
+
+const unlockButtons = function() {
+    var input = document.getElementsByTagName('button');
+            for (var i = 0; i < input.length; i++) {
+                input[i].disabled = false;
+            };
+};
+
 
 let firstNo = '';
 let oper = '';
+
 const lockOperators = function() {
     var input = document.getElementsByClassName('operator');
             for (var i = 0; i < input.length; i++) {
@@ -76,6 +94,8 @@ const clearScreen = function() {
     oper = '';
     secondNo = '';
     document.getElementById("display").innerHTML = 0;
+    unlockButtons();
+    document.getElementById("dec").disabled = true;
     lockOperators();
 };
 
@@ -118,9 +138,7 @@ const screenAdd = function(keypress) {
     if (screen.slice(-1) == oper) {
         lockOperators();
     };
-     console.log("1st: "+firstNo);
-     console.log("2nd: "+secondNo);
-     console.log("op: "+oper);
+     
     if (oper == '') {
         document.getElementById("equals").disabled = true;
     };
