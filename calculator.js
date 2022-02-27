@@ -95,18 +95,22 @@ const clearScreen = function() {
     secondNo = '';
     document.getElementById("display").innerHTML = 0;
     unlockButtons();
-    document.getElementById("dec").disabled = true;
     lockOperators();
 };
 
 const screenAdd = function(keypress) {
     
     screen = screen.concat(keypress);
+    for (var i = 0; i < screen.length; i++) {
+        if (screen[i] == '.') {
+            document.getElementById("dec").disabled = true;
+        };
+    };
     unlockOperators();
     
     document.getElementById("display").innerHTML = screen;
     
-    if (isNaN(keypress) == true) {
+    if (isNaN(keypress) == true && keypress != '.') {
         oper = oper.concat(keypress);
         if (oper.length > 1) {
             if (oper.slice(-1) == "=") {
@@ -137,6 +141,7 @@ const screenAdd = function(keypress) {
     
     if (screen.slice(-1) == oper) {
         lockOperators();
+        document.getElementById("dec").disabled = false;
     };
      
     if (oper == '') {
