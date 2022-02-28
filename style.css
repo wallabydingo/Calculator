@@ -34,7 +34,17 @@ body {
     width: 90px;
     grid-column: 4 / span 2;
     background-color: #962D3E;
-    color: #ffffff;
+    color: #f8e7ea;
+}
+
+#bksp {
+    background-color: #f8e7ea;
+    color: #962D3E;
+}
+
+#bksp:disabled {
+    background-color: #f8e7ea;
+    color: #962d3e50;
 }
 
 button {

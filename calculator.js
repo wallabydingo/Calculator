@@ -96,37 +96,69 @@ const clearScreen = function() {
     document.getElementById("display").innerHTML = 0;
     unlockButtons();
     lockOperators();
+    document.getElementById("bksp").disabled = true;
 };
 
 const screenAdd = function(keypress) {
+    document.getElementById("bksp").disabled = false;
+    if (keypress == 'b') {
+        if (screen.slice(-1) == oper.slice(-1)) {
+            oper = '';
+            console.log(oper);
+            unlockOperators();
+            document.getElementById("equals").disabled = true;
+        };
+        screen = screen.slice(0, -1);
+        if (screen == '') {
+            document.getElementById("bksp").disabled = true;
+            lockOperators();
+        };
+        document.getElementById("display").innerHTML = screen;
+    } else {
     
     screen = screen.concat(keypress);
-    for (var i = 0; i < screen.length; i++) {
-        if (screen[i] == '.') {
-            document.getElementById("dec").disabled = true;
+
+    if (oper == '') {
+        for (var i = 0; i < screen.length; i++) {
+            if (screen[i] == '.') {
+                document.getElementById("dec").disabled = true;
+            };
         };
+    } else {
+        for (var i = 0; i < screen.split(oper.slice(0,1))[1].length; i++) {
+            if (screen.split(oper.slice(0,1))[1][i] == '.') {
+                document.getElementById("dec").disabled = true;
+            };
+        };
+        
     };
+
     unlockOperators();
     
     document.getElementById("display").innerHTML = screen;
     
     if (isNaN(keypress) == true && keypress != '.') {
         oper = oper.concat(keypress);
+        lockOperators();
+        document.getElementById("dec").disabled = false;
         if (oper.length > 1) {
             if (oper.slice(-1) == "=") {
+                lockButtons();
+                document.getElementById("clear").disabled = false;
                 firstNo = parseFloat(screen.split(oper.slice(0,1))[0]);
                 secondNo = screen.replace(firstNo+oper.slice(0,1),'');
                 secondNo = parseFloat(secondNo.replace(oper.slice(-1),''));
-                firstNo = +operate(oper.slice(0,1),firstNo,secondNo).toFixed(3);
+                firstNo = +operate(oper.slice(0,1),firstNo,secondNo).toFixed(7);
                 screen = firstNo;
                 document.getElementById("display").innerHTML = screen;
                 secondNo = '';
                 oper = '';
+                
             } else {
                 firstNo = parseFloat(screen.split(oper.slice(0,1))[0]);
                 secondNo = screen.replace(firstNo+oper.slice(0,1),'');
                 secondNo = parseFloat(secondNo.replace(oper.slice(-1),''));
-                firstNo = +operate(oper.slice(0,1),firstNo,secondNo).toFixed(3);
+                firstNo = +operate(oper.slice(0,1),firstNo,secondNo).toFixed(7);
                 oper = oper.slice(-1);
                 screen = firstNo + oper;
                 document.getElementById("display").innerHTML = screen;
@@ -134,13 +166,9 @@ const screenAdd = function(keypress) {
         };
         
     };
-    
-    if (screen.slice(-1) == oper) {
-        lockOperators();
-        document.getElementById("dec").disabled = false;
-    };
      
     if (oper == '') {
         document.getElementById("equals").disabled = true;
     };
+};
 };
