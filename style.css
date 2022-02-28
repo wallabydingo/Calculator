@@ -4,7 +4,7 @@ body {
 
 .calculator {
     display: grid;
-    grid-template-columns: 50px 50px 50px 50px;
+    grid-template-columns: 50px 50px 50px 50px 50px;
     grid-template-rows: 50px 50px 50px 50px;
     padding: 20px;
     padding-right: 10px;
@@ -18,12 +18,12 @@ body {
 }
 
 .screen {
-    grid-column: 1 / span 3;
+    grid-column: 1 / span 5;
     padding-left: 5px;
     padding-top: 7px;
     font-family:'Courier New', Courier, monospace;
     height: 33px;
-    width: 135px;
+    width: 235px;
     border-radius: 6px;
     background-color: #f5f5f5;
     font-size:x-large;
@@ -31,6 +31,8 @@ body {
 }
 
 .clear {
+    width: 90px;
+    grid-column: 4 / span 2;
     background-color: #962D3E;
     color: #ffffff;
 }
@@ -68,6 +70,8 @@ button:disabled {
 }
 
 #equals {
+    grid-column: 4 / span 2;
+    width: 90px;
     background-color: #348899;
     color: #343642;
 }

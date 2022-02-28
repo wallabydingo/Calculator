@@ -11,27 +11,31 @@
 <body>
     <div class="calculator">
         <div class="screen" id="display">0</span></div>
-        <button id="clear" class="clear" onclick="clearScreen()">C</button>
+        
         
         <button onclick="screenAdd('1')">1</button>
         <button onclick="screenAdd('2')">2</button>
         <button onclick="screenAdd('3')">3</button>
-        <button disabled class="operator" onclick="screenAdd('+')">+</button>
-            
+        <button id="clear" class="clear" onclick="clearScreen()">C</button>
+        
         <button onclick="screenAdd('4')">4</button>
         <button onclick="screenAdd('5')">5</button>
         <button onclick="screenAdd('6')">6</button>
+        <button disabled class="operator" onclick="screenAdd('+')">+</button>
         <button disabled class="operator" onclick="screenAdd('-')">-</button>
-            
+        
         <button onclick="screenAdd('7')">7</button>
         <button onclick="screenAdd('8')">8</button>
         <button onclick="screenAdd('9')">9</button>
         <button disabled class="operator" onclick="screenAdd('*')">x</button>
+        <button disabled class="operator" onclick="screenAdd('/')">&#247;</button>
             
+        <button onclick="screenAdd('b')">&#8678;</button>
         <button onclick="screenAdd('0')">0</button>
         <button id="dec" onclick="screenAdd('.')">.</button>
         <button disabled id="equals" class="operator" onclick="screenAdd('=')">=</button>
-        <button disabled class="operator" onclick="screenAdd('/')">&#247;</button>
+        
+        
            
         
     </div>
