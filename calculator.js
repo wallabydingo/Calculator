@@ -2,15 +2,15 @@
 
 const add = function(a, b) {
     return a + b;
-  };
+};
   
 const subtract = function(a, b) {
     return a - b;
-  };
+};
   
 const multiply = function(a, b) {
-      return a * b;
-  };
+    return a * b;
+};
   
 const divide = function(a, b) {
     if (b === 0) {
@@ -19,8 +19,7 @@ const divide = function(a, b) {
         console.log("unlock clear?")
         document.getElementById("clear").disabled = false;
     } else {return a / b;}
-    
-  };
+};
 
 
 const operate = function(operator, a, b) {
@@ -44,6 +43,7 @@ const operate = function(operator, a, b) {
     };
     
 };
+
 const lockButtons = function() {
     var input = document.getElementsByTagName('button');
             for (var i = 0; i < input.length; i++) {
@@ -76,15 +76,35 @@ const unlockOperators = function() {
             };
 };
 
-
-/* const lockEquals = function() {
-    document.getElementById("equals").disabled = true;
-};
-
-const unlockEquals = function() {
-    document.getElementById("equals").disabled = false;
-}; */
-
+window.addEventListener("keydown", function(event) {
+    console.log(event.key);
+    console.log(typeof event.key);
+    if (event.key == 'Backspace') {
+        screenAdd('b');
+    };
+    switch (event.key) {
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+        case '0':
+        case '.':
+        case '+':
+        case '-':
+        case '*':
+        case '/':
+        case '=':
+            screenAdd(event.key);
+            break;
+        default:
+            break;
+    };
+}, true);
 
 var screen = '';
 
@@ -116,59 +136,59 @@ const screenAdd = function(keypress) {
         document.getElementById("display").innerHTML = screen;
     } else {
     
-    screen = screen.concat(keypress);
+        screen = screen.concat(keypress);
 
-    if (oper == '') {
-        for (var i = 0; i < screen.length; i++) {
-            if (screen[i] == '.') {
-                document.getElementById("dec").disabled = true;
+        if (oper == '') {
+            for (var i = 0; i < screen.length; i++) {
+                if (screen[i] == '.') {
+                    document.getElementById("dec").disabled = true;
+                };
             };
-        };
-    } else {
-        for (var i = 0; i < screen.split(oper.slice(0,1))[1].length; i++) {
-            if (screen.split(oper.slice(0,1))[1][i] == '.') {
-                document.getElementById("dec").disabled = true;
+        } else {
+            for (var i = 0; i < screen.split(oper.slice(0,1))[1].length; i++) {
+                if (screen.split(oper.slice(0,1))[1][i] == '.') {
+                    document.getElementById("dec").disabled = true;
+                };
             };
+            
         };
-        
-    };
 
-    unlockOperators();
+        unlockOperators();
     
-    document.getElementById("display").innerHTML = screen;
+        document.getElementById("display").innerHTML = screen;
     
-    if (isNaN(keypress) == true && keypress != '.') {
-        oper = oper.concat(keypress);
-        lockOperators();
-        document.getElementById("dec").disabled = false;
-        if (oper.length > 1) {
-            if (oper.slice(-1) == "=") {
-                lockButtons();
-                document.getElementById("clear").disabled = false;
-                firstNo = parseFloat(screen.split(oper.slice(0,1))[0]);
-                secondNo = screen.replace(firstNo+oper.slice(0,1),'');
-                secondNo = parseFloat(secondNo.replace(oper.slice(-1),''));
-                firstNo = +operate(oper.slice(0,1),firstNo,secondNo).toFixed(7);
-                screen = firstNo;
-                document.getElementById("display").innerHTML = screen;
-                secondNo = '';
-                oper = '';
-                
-            } else {
-                firstNo = parseFloat(screen.split(oper.slice(0,1))[0]);
-                secondNo = screen.replace(firstNo+oper.slice(0,1),'');
-                secondNo = parseFloat(secondNo.replace(oper.slice(-1),''));
-                firstNo = +operate(oper.slice(0,1),firstNo,secondNo).toFixed(7);
-                oper = oper.slice(-1);
-                screen = firstNo + oper;
-                document.getElementById("display").innerHTML = screen;
+        if (isNaN(keypress) == true && keypress != '.') {
+            oper = oper.concat(keypress);
+            lockOperators();
+            document.getElementById("dec").disabled = false;
+            if (oper.length > 1) {
+                if (oper.slice(-1) == "=") {
+                    lockButtons();
+                    document.getElementById("clear").disabled = false;
+                    firstNo = parseFloat(screen.split(oper.slice(0,1))[0]);
+                    secondNo = screen.replace(firstNo+oper.slice(0,1),'');
+                    secondNo = parseFloat(secondNo.replace(oper.slice(-1),''));
+                    firstNo = +operate(oper.slice(0,1),firstNo,secondNo).toFixed(7);
+                    screen = firstNo;
+                    document.getElementById("display").innerHTML = screen;
+                    secondNo = '';
+                    oper = '';
+                    
+                } else {
+                    firstNo = parseFloat(screen.split(oper.slice(0,1))[0]);
+                    secondNo = screen.replace(firstNo+oper.slice(0,1),'');
+                    secondNo = parseFloat(secondNo.replace(oper.slice(-1),''));
+                    firstNo = +operate(oper.slice(0,1),firstNo,secondNo).toFixed(7);
+                    oper = oper.slice(-1);
+                    screen = firstNo + oper;
+                    document.getElementById("display").innerHTML = screen;
+                };
             };
+            
         };
-        
-    };
      
-    if (oper == '') {
-        document.getElementById("equals").disabled = true;
+        if (oper == '') {
+            document.getElementById("equals").disabled = true;
+        };
     };
-};
 };
