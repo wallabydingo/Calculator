@@ -1,5 +1,5 @@
 body {
-    background-color: #d7d5d5;
+    background-color: #0e171e;
 }
 
 .calculator {
@@ -11,7 +11,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
-    background-color: #979C9C;
+    background-color: #2f4d64;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     width: fit-content;
     border-radius: 6px;
@@ -24,25 +24,26 @@ body {
     padding-top: 2px;
     font-family: 'LCD14';
     vertical-align: middle;
+    text-align: right;
     font-size: 16px;
     height: 33px;
     width: 235px;
     border-radius: 6px;
-    background-color: #f5f5f5;
+    background-color: #f2f5eaff;
     font-size:x-large;
-    color: #374140;
+    color: #2c363fff;
 }
 
 .clear {
     width: 90px;
     grid-column: 4 / span 2;
-    background-color: #962D3E;
-    color: #f8e7ea;
+    background-color:  #5c1823;
+    color: #f8e4e7;
 }
 
 #bksp {
-    background-color: #f8e7ea;
-    color: #962D3E;
+    background-color: #f8e4e7;
+    color:  #5c1823;
 }
 
 #bksp:disabled {
@@ -54,13 +55,17 @@ button {
     width: 40px;
     height: 40px;
     border-radius: 6px;
-    background-color: #F2EBC7;
+    background-color: #6d98baff;
     border: none;
-    color: #343642;
+    color: #2c363fff;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
     cursor: pointer;
+}
+
+button:disabled {
+    color: rgba(44, 54, 63, 0.329);
 }
 
 button:hover {
@@ -73,22 +78,22 @@ button:disabled {
 }
 
 .operator {
-    background-color: #343642;
-    color: #348899;
+    background-color: #2c363fff;
+    color: #f0803cff;;
 }
 
 .operator:disabled {
-    color: rgba(52, 136, 153, 0.322);
+    color: rgba(240, 129, 60, 0.267);
     
 }
 
 #equals {
     grid-column: 4 / span 2;
     width: 90px;
-    background-color: #348899;
-    color: #343642;
+    background-color: #f0803cff;
+    color: #2c363fff;
 }
 
 #equals:disabled {
-    color: rgba(52, 54, 66, 0.329);
+    color: rgba(44, 54, 63, 0.308);
 }
